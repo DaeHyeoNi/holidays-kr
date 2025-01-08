@@ -1,0 +1,45 @@
+name: Update Holiday Data
+
+on:
+  schedule:
+    - cron: '0 0,2,4,6,8 0-8 * * *'  # UTC time (KST-9)
+  workflow_dispatch:
+
+jobs:
+  update-holidays:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
+      
+    - name: Build and run Docker container
+      env:
+        HOLIDAY_API_KEY: ${{ secrets.HOLIDAY_API_KEY }}
+      run: |
+        docker build -t holiday-updater .
+        docker run --rm \
+          -e HOLIDAY_API_KEY=${HOLIDAY_API_KEY} \
+          -v ${GITHUB_WORKSPACE}/data:/app/data \
+          holiday-updater
+
+    - name: Check for changes
+      id: check-changes
+      run: |
+        if [[ -n $(git status -s) ]]; then
+          echo "changes=true" >> $GITHUB_OUTPUT
+        fi
+
+    - name: Commit and push if changed
+      if: steps.check-changes.outputs.changes == 'true'
+      run: |
+        git config --global user.name 'GitHub Action'
+        git config --global user.email 'action@github.com'
+        git add .
+        git commit -m "Update holiday data [skip ci]"
+        git push
