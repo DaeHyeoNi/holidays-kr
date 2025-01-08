@@ -46,7 +46,7 @@ cat >> public/index.html << EOF
                     ICS 파일을 다운로드하여 캘린더 앱에 import하거나, 아래 URL을 캘린더 앱에 직접 구독 URL로 등록할 수 있습니다:
                 </p>
                 <code class="bg-gray-100 p-2 rounded block mb-4">
-                    https://$(echo $GITHUB_REPOSITORY_OWNER).github.io/$(echo $GITHUB_REPOSITORY | cut -d'/' -f2)/holidays.ics
+                    https://daehyeoni.dev/$(echo $GITHUB_REPOSITORY | cut -d'/' -f2)/holidays.ics
                 </code>
                 <p class="mb-4">
                     JSON 데이터는 연도별로 제공됩니다. 각 JSON 파일은 해당 연도의 공휴일 정보를 포함하고 있습니다.
@@ -55,7 +55,7 @@ cat >> public/index.html << EOF
         </div>
 
         <footer class="mt-8 text-center text-gray-600">
-            <p>데이터 출처: 공공데이터포털 (공휴일 정보)</p>
+            <p>데이터 출처: <a href="https://www.data.go.kr/data/15012690/openapi.do">공공데이터포털 (공휴일 정보)</a></p>
             <p class="mt-2">
                 <a href="https://github.com/${GITHUB_REPOSITORY}" class="text-blue-500 hover:text-blue-700">GitHub Repository</a>
             </p>
