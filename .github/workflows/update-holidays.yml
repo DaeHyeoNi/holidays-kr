@@ -2,7 +2,7 @@ name: Update Holiday Data
 
 on:
   schedule:
-    - cron: '0 0,2,4,6,8 0-8 * * *'  # UTC time (KST-9)
+    - cron: '0 0,2,4,6,8 * * 1-5'  # UTC time (KST-9)
   workflow_dispatch:
 
 jobs:
