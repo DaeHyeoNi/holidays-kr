@@ -33,6 +33,7 @@ jobs:
         docker buildx build \
           --cache-from=type=local,src=/tmp/.buildx-cache \
           --cache-to=type=local,dest=/tmp/.buildx-cache-new,mode=max \
+          --load \
           -t holiday-updater .
         docker run --rm \
           -e HOLIDAY_API_KEY=${HOLIDAY_API_KEY} \
