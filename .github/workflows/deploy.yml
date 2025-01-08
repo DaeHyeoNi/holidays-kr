@@ -30,6 +30,12 @@ jobs:
           cp holidays.ics public/
           cp data/*.json public/
 
+      - name: Generate index.html
+        run: ./scripts/create-index.sh
+        env:
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          GITHUB_REPOSITORY_OWNER: ${{ github.repository_owner }}
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
