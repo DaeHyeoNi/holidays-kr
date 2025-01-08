@@ -1,5 +1,7 @@
 #!/bin/bash
 
+GCAL_URL="https://calendar.google.com/calendar/r?cid=webcal://daehyeoni.dev/holidays-kr/holidays.ics"
+
 cat > public/index.html << EOF
 <!DOCTYPE html>
 <html lang="ko">
@@ -21,7 +23,10 @@ EOF
 # Add holidays.ics with current date
 echo "<li class=\"flex items-center justify-between py-2 border-b\">" >> public/index.html
 echo "    <span class=\"font-medium\">holidays.ics</span>" >> public/index.html
-echo "    <a href=\"holidays.ics\" class=\"text-blue-500 hover:text-blue-700\">다운로드</a>" >> public/index.html
+echo "    <div class=\"space-x-4\">" >> public/index.html
+echo "        <a href=\"holidays.ics\" class=\"text-blue-500 hover:text-blue-700\">다운로드</a>" >> public/index.html
+echo "        <a href=\"${GCAL_URL}\" class=\"text-green-500 hover:text-green-700\" target=\"_blank\">Google Calendar에 추가</a>" >> public/index.html
+echo "    </div>" >> public/index.html
 echo "</li>" >> public/index.html
 
 # Add JSON files with their last modified dates
@@ -42,12 +47,20 @@ cat >> public/index.html << EOF
         <div class="bg-white rounded-lg shadow-md p-6">
             <h2 class="text-xl font-semibold mb-4">사용 방법</h2>
             <div class="prose">
+                <h3 class="text-lg font-medium mb-2">Google Calendar에 추가하기</h3>
                 <p class="mb-4">
-                    ICS 파일을 다운로드하여 캘린더 앱에 import하거나, 아래 URL을 캘린더 앱에 직접 구독 URL로 등록할 수 있습니다:
+                    "Google Calendar에 추가" 버튼을 클릭하면 자동으로 Google Calendar에 구독이 추가됩니다.
+                </p>
+
+                <h3 class="text-lg font-medium mb-2">다른 캘린더 앱에서 구독하기</h3>
+                <p class="mb-2">
+                    아래 URL을 캘린더 앱의 구독 기능에 직접 입력하여 사용할 수 있습니다:
                 </p>
                 <code class="bg-gray-100 p-2 rounded block mb-4">
                     https://daehyeoni.dev/$(echo $GITHUB_REPOSITORY | cut -d'/' -f2)/holidays.ics
                 </code>
+
+                <h3 class="text-lg font-medium mb-2">JSON 데이터</h3>
                 <p class="mb-4">
                     JSON 데이터는 연도별로 제공됩니다. 각 JSON 파일은 해당 연도의 공휴일 정보를 포함하고 있습니다.
                 </p>
