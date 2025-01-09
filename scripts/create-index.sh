@@ -72,6 +72,9 @@ cat >> public/index.html << EOF
             <p class="mt-2">
                 <a href="https://github.com/${GITHUB_REPOSITORY}" class="text-blue-500 hover:text-blue-700">GitHub Repository</a>
             </p>
+            <p class="mt-2 text-sm">
+                마지막 갱신일자: $(TZ='Asia/Seoul' date -r holidays.ics '+%Y년 %m월 %d일 %H:%M:%S KST')
+            </p>
         </footer>
     </div>
 </body>
