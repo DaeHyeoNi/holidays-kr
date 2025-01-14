@@ -1,5 +1,5 @@
 # 대한민국 공휴일 데이터
-<a href="[https://www.google.com/](https://calendar.google.com/calendar/r?cid=webcal://daehyeoni.dev/holidays-kr/holidays.ics)" target="_blank"><img src="https://github.com/user-attachments/assets/53ba73ed-b5f8-411a-a8ea-340cca1cd00d"></a>
+<a href="https://calendar.google.com/calendar/r?cid=webcal://daehyeoni.dev/holidays-kr/holidays.ics" target="_blank"><img src="https://github.com/user-attachments/assets/53ba73ed-b5f8-411a-a8ea-340cca1cd00d"></a>
 
 구글 캘린더는 공휴일 정보가 임시공휴일 등으로 누락되거나 잘못된 휴일 정보가 존재합니다.
 
