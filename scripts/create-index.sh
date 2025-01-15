@@ -10,8 +10,11 @@ cat > public/index.html << EOF
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>대한민국 공휴일 데이터</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-fork-ribbon-css/0.2.3/gh-fork-ribbon.min.css" /
+    <style>.github-fork-ribbon.left-top:before {background-color: #333;}</style>
 </head>
 <body class="bg-gray-100 min-h-screen py-8">
+    <a class="github-fork-ribbon left-top" href="https://github.com/DaeHyeoNi/holidays-kr" data-ribbon="Fork me on GitHub" title="Fork me on GitHub">Fork me on GitHub</a>
     <div class="container mx-auto px-4">
         <h1 class="text-3xl font-bold mb-8">대한민국 공휴일 데이터</h1>
         
