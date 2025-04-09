@@ -60,3 +60,10 @@ jobs:
         git add .
         git commit -m "Update holiday data"
         git push
+
+    - name: Trigger deploy workflow
+      if: steps.check-changes.outputs.changes == 'true'
+      uses: peter-evans/repository-dispatch@v2
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        event-type: holiday-update
