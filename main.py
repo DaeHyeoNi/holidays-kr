@@ -3,6 +3,7 @@ import glob
 import hashlib
 import json
 import os
+import time
 import uuid
 from datetime import datetime
 
@@ -82,7 +83,6 @@ class HolidayManager:
                 event = Event()
                 event.add("summary", summary)
                 event.add("dtstart", date_obj.date())
-                event.add("dtstamp", datetime.now())
 
                 # Generate a unique, deterministic UUID for each holiday
                 # Using combination of date and holiday name to ensure consistency
@@ -118,6 +118,7 @@ class HolidayManager:
             if os.path.exists(filename):
                 old_hash = self.calculate_hash(filename)
                 self.save_json(formatted_data, year)
+                time.sleep(1)  # Ensure different timestamps for hash calculation
                 new_hash = self.calculate_hash(filename)
                 if old_hash != new_hash:
                     changes_detected = True
