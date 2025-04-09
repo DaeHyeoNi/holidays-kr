@@ -116,11 +116,10 @@ class HolidayManager:
 
             # Check if file exists and compare content
             if os.path.exists(filename):
-                old_hash = self.calculate_hash(filename)
-                self.save_json(formatted_data, year)
-                time.sleep(1)  # Ensure different timestamps for hash calculation
-                new_hash = self.calculate_hash(filename)
-                if old_hash != new_hash:
+                with open(filename, "r") as f:
+                    existing_data = json.load(f)
+                if existing_data != formatted_data:
+                    self.save_json(formatted_data, year)
                     changes_detected = True
             else:
                 self.save_json(formatted_data, year)
