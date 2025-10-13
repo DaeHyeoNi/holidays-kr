@@ -37,7 +37,7 @@ jobs:
           -t holiday-updater .
         docker run --rm \
           -e HOLIDAY_API_KEY=${HOLIDAY_API_KEY} \
-          -v ${GITHUB_WORKSPACE}/data:/app/data \
+          -v ${GITHUB_WORKSPACE}:/app \
           holiday-updater
 
     - name: Move cache
