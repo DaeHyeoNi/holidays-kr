@@ -25,10 +25,9 @@ class HolidayManager:
             "numOfRows": "100",
         }
         response = requests.get(self.api, params=params)
+        response.raise_for_status()
 
-        if response.status_code == 200:
-            return response.json()["response"]["body"]["items"]["item"]
-        return []
+        return response.json()["response"]["body"]["items"]["item"]
 
     def format_holidays(self, holidays):
         formatted = {}
